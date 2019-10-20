@@ -9,10 +9,15 @@ public class GroundScrpit : MonoBehaviour
     public GameObject groundOringin;
     //导入其他组件
     private Transform _transform;
+
+    private Rigidbody2D _rigidbody2D;
     // Start is called before the first frame update
     void Start()
     {
         _transform = GetComponent<Transform>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+        //设置速度为公用速度
+        _rigidbody2D.velocity = new Vector2(-GameObject.Find("YB").GetComponent<BirdScript>().xSpeed,0);
     }
 
     // Update is called once per frame
@@ -23,8 +28,6 @@ public class GroundScrpit : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //x坐标自减xspeed
-        _transform.Translate(new Vector3(- GameObject.Find("YB").GetComponent<BirdScript>().xSpeed,0));
         if (_transform.position.x <= -5.69)
         {
             Vector3 positionForNewGround = _transform.position;

@@ -6,17 +6,20 @@ public class PipeScript : MonoBehaviour
 {
     public GameObject pipeOringin;
     private Transform _transform;
+
+    private Rigidbody2D _rigidbody2D;
     // Start is called before the first frame update
     void Start()
     {
         _transform = GetComponent<Transform>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+        //设置速度为公用速度
+        _rigidbody2D.velocity = new Vector2(-GameObject.Find("YB").GetComponent<BirdScript>().xSpeed,0);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        //x坐标自减xspeed
-        _transform.Translate(new Vector3(- GameObject.Find("YB").GetComponent<BirdScript>().xSpeed,0));
         if (_transform.position.x <= -5)
         {
             Vector3 positionForNewPipe = _transform.position;
