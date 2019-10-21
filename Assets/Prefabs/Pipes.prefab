@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443432617244815502}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5760268, z: 3.6453063}
+  m_LocalPosition: {x: 0, y: 1.52, z: 3.6453063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 703395343747434019}
@@ -134,7 +134,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767372567745266770}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.4884315, z: 3.6453063}
+  m_LocalPosition: {x: 0, y: -2.88, z: 3.6453063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 703395343747434019}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 974562184510646848}
   m_Layer: 0
   m_Name: Pipes
-  m_TagString: Untagged
+  m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -263,6 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pipeOringin: {fileID: 6209921427788044535}
+  ShouldMove: 1
 --- !u!50 &974562184510646848
 Rigidbody2D:
   serializedVersion: 4

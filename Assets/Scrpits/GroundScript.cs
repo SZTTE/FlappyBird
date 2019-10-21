@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundScrpit : MonoBehaviour
+public class GroundScript : MonoBehaviour
 {
-    public bool shouldMove = true; 
+    public bool ShouldMove = true; 
     public GameObject groundOringin;
     //导入其他组件
     private Transform _transform;
@@ -28,12 +28,15 @@ public class GroundScrpit : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_transform.position.x <= -5.69)
+        if (_transform.position.x <= -5.69)//要是地面太靠左，就删除自己，从右边生成一个新的地面
         {
             Vector3 positionForNewGround = _transform.position;
-            positionForNewGround.x += (float)(2*3.3563);
+            positionForNewGround.x += (float)(2*3.345);
             GameObject ground = Instantiate(groundOringin, positionForNewGround, Quaternion.identity);
             Destroy(gameObject);
         }
+        
+        if (!ShouldMove)//不该动就别动。
+            _rigidbody2D.velocity = Vector2.zero;
     }
 }
