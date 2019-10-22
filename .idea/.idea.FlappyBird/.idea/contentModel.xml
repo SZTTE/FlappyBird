@@ -8,6 +8,7 @@
           <e p="BirdScript.cs" t="Include" />
           <e p="GroundScript.cs" t="Include" />
           <e p="PipeScript.cs" t="Include" />
+          <e p="StartButtonScript.cs" t="Include" />
         </e>
         <e p="Unity切割图片方法.txt" t="Include" />
       </e>
