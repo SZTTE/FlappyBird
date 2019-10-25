@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
+using Random = System.Random;
 
 
 public class BirdScript : MonoBehaviour
@@ -14,6 +15,10 @@ public class BirdScript : MonoBehaviour
         SelfControl,PlayerControl,Dead
     }
     public BirdState state = BirdState.SelfControl;
+
+    public Sprite redPicture;
+    public Sprite yellowPicture;
+    public Sprite bluePicture;
     //这个游戏对象的其他组件
     private Animator animator;
     private Rigidbody2D rigidbody2D;
@@ -30,6 +35,15 @@ public class BirdScript : MonoBehaviour
         rigidbody2D.simulated = true;
     }
 
+    public void ResetBird()//把鸟还原成刚开始游戏的状态
+    {
+        animator.SetBool("isPlaying",false);
+        animator.SetInteger("color", UnityEngine.Random.Range(0,3));
+        animator.SetTrigger("reload");
+        state = BirdState.SelfControl;
+        transform.position = new Vector3(-2.701415f,transform.position.y);
+        Debug.Log("color set");
+    }
 
 
     //------------------------------------------------------------------------------事件函数
@@ -43,12 +57,15 @@ public class BirdScript : MonoBehaviour
 
     void Start()
     {
+        
         //使脚本内组件变量指向外面的组件实例
         animator = transform.Find("YellowBird").GetComponent<Animator>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         _transform = GetComponent<Transform>();
         //指令
         rigidbody2D.simulated = false;
+        ResetBird();
+        Debug.Log("start");
 
     }
 
@@ -58,7 +75,6 @@ public class BirdScript : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0) && state == BirdState.PlayerControl)//按下空格（并且鸟在控制模式下）向上加速
         {
-            animator.SetTrigger("wave");
             //rigidbody2D.AddForce(Vector2.up * 5.5f,ForceMode2D.Impulse);
             rigidbody2D.velocity = Vector2.up*3;
         }
