@@ -17,7 +17,7 @@ public class GroundScript : MonoBehaviour
         _transform = GetComponent<Transform>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         //设置速度为公用速度
-        _rigidbody2D.velocity = new Vector2(-GameObject.Find("YB").GetComponent<BirdScript>().xSpeed,0);
+        _rigidbody2D.velocity = new Vector2(-GameManager.Instance.xSpeed,0);
     }
 
     // Update is called once per frame
