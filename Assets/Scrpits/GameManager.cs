@@ -8,6 +8,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public float xSpeed;
+    private int score = 0;
+
+    public void ScoreAdd()
+    {
+        score++; 
+        Debug.Log("Score = "+score);
+    }
+
     //------------------------------------------------------------------------------------------------------------------事件函数
     void Awake()
     {
@@ -19,6 +27,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SkyScript.instance.ResetTime();
+        BirdScript.Instance.GotoBeginPosition();
+        PipesManager.instance.Stop();
+        score = 0;
+        
     }
 
     // Update is called once per frame
@@ -27,6 +39,8 @@ public class GameManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && BirdScript.Instance.state == BirdScript.BirdState.SelfControl) //如果按下鼠标，鸟切换为玩家控制
         {
             BirdScript.Instance.LetPlayerControl();
+            GameObject.Find("GetReadyUI").GetComponent<Animator>().SetTrigger("fade");
+            PipesManager.instance.Move();
         }
         if (Input.GetMouseButtonDown(0))//for test
         {

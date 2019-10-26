@@ -28,11 +28,12 @@ public class BirdScript : MonoBehaviour
 
     
     //------------------------------------------------------------------------------公共方法
-    public void LetPlayerControl() //给玩家控制权
+    public void LetPlayerControl() //给玩家控制权,并且让鸟跳一下
     {
         animator.SetBool("isPlaying",true);
         state = BirdState.PlayerControl;
         rigidbody2D.simulated = true;
+        rigidbody2D.velocity = Vector2.up*3;
     }
 
     public void ResetBird()//把鸟还原成刚开始游戏的状态
@@ -41,8 +42,13 @@ public class BirdScript : MonoBehaviour
         animator.SetInteger("color", UnityEngine.Random.Range(0,3));
         animator.SetTrigger("reload");
         state = BirdState.SelfControl;
-        transform.position = new Vector3(-2.701415f,transform.position.y);
+        transform.position = new Vector3(transform.position.x,-0.1781336f);
         Debug.Log("color set");
+    }
+
+    public void GotoBeginPosition()
+    {
+        transform.position = new Vector3(-3.26f,-0.1781336f);
     }
 
 
@@ -66,6 +72,7 @@ public class BirdScript : MonoBehaviour
         rigidbody2D.simulated = false;
         ResetBird();
         Debug.Log("start");
+        DontDestroyOnLoad(gameObject);
 
     }
 
@@ -99,7 +106,7 @@ public class BirdScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)//要是装上扳机碰撞体
     {
         
-        if (other.CompareTag("Pipe"))
+        if (other.CompareTag("Pipe") || other.CompareTag("Ground"))
         {
             //把管子停下来
             var foundPipeScripts = GameObject.FindObjectsOfType<PipeScript>(); //通过pipeScrpit的类型找到所有附着在管子上的组件。
@@ -113,10 +120,16 @@ public class BirdScript : MonoBehaviour
             foundGroundScripts[1].ShouldMove = false;
             //把自己停下来
             state = BirdState.Dead;
+            animator.SetTrigger("die");
         }
         if (other.CompareTag("Ground"))
         {
             rigidbody2D.simulated = false;
+        }
+
+        if (other.CompareTag("ScoreBox"))
+        {
+            GameManager.Instance.ScoreAdd();
         }
         
     }

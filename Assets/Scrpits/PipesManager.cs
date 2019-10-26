@@ -15,6 +15,12 @@ public class PipesManager : MonoBehaviour
             pipes[i].ShouldMove = false;
     }
 
+    public void Move()
+    {
+        for (int i = 0; i <= 3; i++)
+            pipes[i].ShouldMove = true;
+    }
+
     void Awake()
     {
         if (instance == null)

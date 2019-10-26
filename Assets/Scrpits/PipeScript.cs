@@ -34,5 +34,6 @@ public class PipeScript : MonoBehaviour
     {
         
         if (!ShouldMove)    _rigidbody2D.velocity = Vector2.zero;
+        else                _rigidbody2D.velocity = new Vector2(-GameManager.Instance.xSpeed,0);
     }
 }
