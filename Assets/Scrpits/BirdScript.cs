@@ -21,7 +21,7 @@ public class BirdScript : MonoBehaviour
     public Sprite bluePicture;
     //这个游戏对象的其他组件
     private Animator animator;
-    private Rigidbody2D rigidbody2D;
+    private Rigidbody2D _rigidbody2D;
     private Transform _transform;
     //私有字段
     
@@ -32,8 +32,8 @@ public class BirdScript : MonoBehaviour
     {
         animator.SetBool("isPlaying",true);
         state = BirdState.PlayerControl;
-        rigidbody2D.simulated = true;
-        rigidbody2D.velocity = Vector2.up*3;
+        _rigidbody2D.simulated = true;
+        _rigidbody2D.velocity = Vector2.up*3;
     }
 
     public void ResetBird()//把鸟还原成刚开始游戏的状态
@@ -43,7 +43,6 @@ public class BirdScript : MonoBehaviour
         animator.SetTrigger("reload");
         state = BirdState.SelfControl;
         transform.position = new Vector3(transform.position.x,-0.1781336f);
-        Debug.Log("color set");
     }
 
     public void GotoBeginPosition()
@@ -66,12 +65,11 @@ public class BirdScript : MonoBehaviour
         
         //使脚本内组件变量指向外面的组件实例
         animator = transform.Find("YellowBird").GetComponent<Animator>();
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
         _transform = GetComponent<Transform>();
         //指令
-        rigidbody2D.simulated = false;
+        _rigidbody2D.simulated = false;
         ResetBird();
-        Debug.Log("start");
         DontDestroyOnLoad(gameObject);
 
     }
@@ -82,24 +80,24 @@ public class BirdScript : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0) && state == BirdState.PlayerControl)//按下空格（并且鸟在控制模式下）向上加速
         {
-            //rigidbody2D.AddForce(Vector2.up * 5.5f,ForceMode2D.Impulse);
-            rigidbody2D.velocity = Vector2.up*3;
+            //_rigidbody2D.AddForce(Vector2.up * 5.5f,ForceMode2D.Impulse);
+            _rigidbody2D.velocity = Vector2.up*3;
         }
     }
 
     private void FixedUpdate()
     {
         //转鸟
-        double finalAngle = Mathf.Atan2(rigidbody2D.velocity.y/2 , GameManager.Instance.xSpeed); //最终角
+        double finalAngle = Mathf.Atan2(_rigidbody2D.velocity.y/2 , GameManager.Instance.xSpeed); //最终角
         _transform.localEulerAngles = new Vector3(0,0,(float)finalAngle* Mathf.Rad2Deg );
         //规范鸟的数值速度
-        if (rigidbody2D.velocity.y > 4)
+        if (_rigidbody2D.velocity.y > 4)
         {
-            rigidbody2D.velocity = Vector2.up * 4;
+            _rigidbody2D.velocity = Vector2.up * 4;
         }
-        if (rigidbody2D.velocity.y < -4)
+        if (_rigidbody2D.velocity.y < -4)
         {
-            rigidbody2D.velocity = Vector2.up * -4;
+            _rigidbody2D.velocity = Vector2.up * -4;
         }
     }
 
@@ -124,12 +122,13 @@ public class BirdScript : MonoBehaviour
         }
         if (other.CompareTag("Ground"))
         {
-            rigidbody2D.simulated = false;
+            _rigidbody2D.simulated = false;
         }
 
         if (other.CompareTag("ScoreBox"))
         {
             GameManager.Instance.ScoreAdd();
+            BigCounterScript.instance.Print(GameManager.Instance.score);
         }
         
     }

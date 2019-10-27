@@ -8,12 +8,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public float xSpeed;
-    private int score = 0;
+    public int score = 0;
 
     public void ScoreAdd()
     {
-        score++; 
-        Debug.Log("Score = "+score);
+        score++;
     }
 
     //------------------------------------------------------------------------------------------------------------------事件函数
@@ -30,6 +29,7 @@ public class GameManager : MonoBehaviour
         BirdScript.Instance.GotoBeginPosition();
         PipesManager.instance.Stop();
         score = 0;
+        BigCounterScript.instance.Print(0);
         
     }
 
@@ -42,10 +42,5 @@ public class GameManager : MonoBehaviour
             GameObject.Find("GetReadyUI").GetComponent<Animator>().SetTrigger("fade");
             PipesManager.instance.Move();
         }
-        if (Input.GetMouseButtonDown(0))//for test
-        {
-            
-        }
-
     }
 }

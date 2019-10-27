@@ -226,7 +226,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5327221621060519752}
   - component: {fileID: 1833908879930840640}
-  - component: {fileID: 7828445867298046078}
   - component: {fileID: 2807800119853328354}
   m_Layer: 0
   m_Name: ScoreBox
@@ -275,18 +274,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.09153211, y: 1.1949883}
   m_EdgeRadius: 0
---- !u!114 &7828445867298046078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5780626599217410953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71375ac1c8bb72349a087f9682fa3377, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &2807800119853328354
 Rigidbody2D:
   serializedVersion: 4
