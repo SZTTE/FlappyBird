@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public float xSpeed;
     public int score = 0;
+    private Animator GameOverUI_Animator;
 
     public void ScoreAdd()
     {
@@ -25,12 +26,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameOverUI_Animator = GameObject.Find("GameOverUI").GetComponent<Animator>();
+        
         SkyScript.instance.ResetTime();
         BirdScript.Instance.GotoBeginPosition();
         PipesManager.instance.Stop();
         score = 0;
         BigCounterScript.instance.Print(0);
-        
+
     }
 
     // Update is called once per frame
@@ -41,6 +44,17 @@ public class GameManager : MonoBehaviour
             BirdScript.Instance.LetPlayerControl();
             GameObject.Find("GetReadyUI").GetComponent<Animator>().SetTrigger("fade");
             PipesManager.instance.Move();
+        }
+        
+        //如果鸟是死的，就切换出GameOverUI，并且禁用操控
+        if (BirdScript.Instance.state == BirdScript.BirdState.Dead)
+        {
+            GameOverUI_Animator.SetBool("Visible",true);
+//            BirdScript.Instance.GetComponent<Animator>().SetBool("isPlaying",false);
+        }
+        else
+        {
+            GameOverUI_Animator.SetBool("Visible",false);
         }
     }
 }

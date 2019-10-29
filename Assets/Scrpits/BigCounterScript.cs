@@ -36,13 +36,17 @@ public class BigCounterScript : MonoBehaviour
         for (int i = 0; i <= numberOfFigure - 1; i++)//（10^i）是第i位数字容器的显示位数
         {
             int number = numberToPrint;
-            Debug.Log("i="+i+"number="+number);
             number /= (int) Math.Pow(10 , numberOfFigure-1-i);
-            Debug.Log("i="+i+"number="+number);
             number %= 10;
-            Debug.Log("i="+i+"number="+number);
             bigNumRenderers[i].sprite = bigNumSprites[number];
             
+        }
+        
+        //特殊情况：打印0
+        if (numberToPrint == 0)
+        {
+            bigNumTransforms[0].localPosition = Vector3.zero;
+            bigNumRenderers[0].sprite = bigNumSprites[0];
         }
     }
 

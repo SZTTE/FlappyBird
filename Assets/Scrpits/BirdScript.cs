@@ -69,7 +69,7 @@ public class BirdScript : MonoBehaviour
         _transform = GetComponent<Transform>();
         //指令
         _rigidbody2D.simulated = false;
-        ResetBird();
+        //ResetBird();
         DontDestroyOnLoad(gameObject);
 
     }
@@ -78,7 +78,7 @@ public class BirdScript : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetMouseButtonDown(0) && state == BirdState.PlayerControl)//按下空格（并且鸟在控制模式下）向上加速
+        if (Input.GetMouseButtonDown(0) && state == BirdState.PlayerControl && _transform.position.y <= 2.5)//按下空格（并且鸟在控制模式下）向上加速
         {
             //_rigidbody2D.AddForce(Vector2.up * 5.5f,ForceMode2D.Impulse);
             _rigidbody2D.velocity = Vector2.up*3;
