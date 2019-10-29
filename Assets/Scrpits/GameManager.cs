@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public float xSpeed;
+    public static float xSpeed = 1;
     public int score = 0;
     private Animator GameOverUI_Animator;
 
@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         
         SkyScript.instance.ResetTime();
         BirdScript.Instance.GotoBeginPosition();
+        BirdScript.Instance.state = BirdScript.BirdState.SelfControl;
         PipesManager.instance.Stop();
         score = 0;
         BigCounterScript.instance.Print(0);
@@ -46,11 +47,11 @@ public class GameManager : MonoBehaviour
             PipesManager.instance.Move();
         }
         
-        //如果鸟是死的，就切换出GameOverUI，并且禁用操控
+        //如果鸟是死的，就切换出GameOverUI，并且启动按钮
         if (BirdScript.Instance.state == BirdScript.BirdState.Dead)
         {
             GameOverUI_Animator.SetBool("Visible",true);
-//            BirdScript.Instance.GetComponent<Animator>().SetBool("isPlaying",false);
+            StartButtonScript.instance.pushable = true;
         }
         else
         {

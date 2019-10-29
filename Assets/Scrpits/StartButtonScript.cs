@@ -6,6 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class StartButtonScript : MonoBehaviour
 {
+    public static StartButtonScript instance;
+    public bool pushable = false;
+
+    private void Awake()
+    {
+        if (instance != null) return;
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,10 +26,22 @@ public class StartButtonScript : MonoBehaviour
     {
         
     }
-
+    
     private void OnMouseDown()
     {
-        Debug.Log("START");
-        SceneManager.LoadScene("PlaySceneScene");
+        //在游戏场景中
+        if (pushable && GameManager.Instance != null)
+        {
+            SceneManager.LoadScene("PlaySceneScene");
+            pushable = false;
+            BirdScript.Instance.ResetBird();
+        }
+        
+        //在封面场景中
+        if (GameManager.Instance == null)
+        {
+            SceneManager.LoadScene("PlaySceneScene");
+            pushable = false;
+        }
     }
 }

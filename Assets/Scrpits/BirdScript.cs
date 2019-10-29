@@ -42,6 +42,7 @@ public class BirdScript : MonoBehaviour
         animator.SetInteger("color", UnityEngine.Random.Range(0,3));
         animator.SetTrigger("reload");
         state = BirdState.SelfControl;
+        GetComponent<Rigidbody2D>().simulated = false;
         transform.position = new Vector3(transform.position.x,-0.1781336f);
     }
 
@@ -69,7 +70,6 @@ public class BirdScript : MonoBehaviour
         _transform = GetComponent<Transform>();
         //指令
         _rigidbody2D.simulated = false;
-        //ResetBird();
         DontDestroyOnLoad(gameObject);
 
     }
@@ -88,7 +88,7 @@ public class BirdScript : MonoBehaviour
     private void FixedUpdate()
     {
         //转鸟
-        double finalAngle = Mathf.Atan2(_rigidbody2D.velocity.y/2 , GameManager.Instance.xSpeed); //最终角
+        double finalAngle = Mathf.Atan2(_rigidbody2D.velocity.y/2 , GameManager.xSpeed); //最终角
         _transform.localEulerAngles = new Vector3(0,0,(float)finalAngle* Mathf.Rad2Deg );
         //规范鸟的数值速度
         if (_rigidbody2D.velocity.y > 4)

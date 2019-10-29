@@ -9,6 +9,7 @@ public class PipeScript : MonoBehaviour
     private Transform _transform;
 
     private Rigidbody2D _rigidbody2D;
+    private Collider2D[] _collider2Ds;
 
     public double XPosition
     {
@@ -25,15 +26,27 @@ public class PipeScript : MonoBehaviour
     {
         _transform = GetComponent<Transform>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _collider2Ds = GetComponentsInChildren<Collider2D>();
         //设置速度为公用速度
-        _rigidbody2D.velocity = new Vector2(-GameManager.Instance.xSpeed,0);
+        _rigidbody2D.velocity = new Vector2(-GameManager.xSpeed,0);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        
-        if (!ShouldMove)    _rigidbody2D.velocity = Vector2.zero;
-        else                _rigidbody2D.velocity = new Vector2(-GameManager.Instance.xSpeed,0);
+
+        if (ShouldMove)
+        {
+            _rigidbody2D.velocity = new Vector2(-GameManager.xSpeed, 0);
+            _collider2Ds[0].enabled = true;
+            _collider2Ds[1].enabled = true;
+        }
+        else
+        {
+            _rigidbody2D.velocity = Vector2.zero;
+            _collider2Ds[0].enabled = false;
+            _collider2Ds[1].enabled = false;
+
+        }
     }
 }
