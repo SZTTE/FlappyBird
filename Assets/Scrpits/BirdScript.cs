@@ -44,6 +44,7 @@ public class BirdScript : MonoBehaviour
         state = BirdState.SelfControl;
         GetComponent<Rigidbody2D>().simulated = false;
         transform.position = new Vector3(transform.position.x,-0.1781336f);
+        _rigidbody2D.velocity = Vector2.zero;
     }
 
     public void GotoBeginPosition()
@@ -77,7 +78,6 @@ public class BirdScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (Input.GetMouseButtonDown(0) && state == BirdState.PlayerControl && _transform.position.y <= 2.5)//按下空格（并且鸟在控制模式下）向上加速
         {
             //_rigidbody2D.AddForce(Vector2.up * 5.5f,ForceMode2D.Impulse);

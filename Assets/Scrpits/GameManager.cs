@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static float xSpeed = 1;
     public int score = 0;
     private Animator GameOverUI_Animator;
+
 
     public void ScoreAdd()
     {
@@ -27,7 +29,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameOverUI_Animator = GameObject.Find("GameOverUI").GetComponent<Animator>();
-        
+
         SkyScript.instance.ResetTime();
         BirdScript.Instance.GotoBeginPosition();
         BirdScript.Instance.state = BirdScript.BirdState.SelfControl;
@@ -57,5 +59,6 @@ public class GameManager : MonoBehaviour
         {
             GameOverUI_Animator.SetBool("Visible",false);
         }
+        
     }
 }
