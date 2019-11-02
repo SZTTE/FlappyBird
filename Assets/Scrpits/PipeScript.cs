@@ -19,6 +19,8 @@ public class PipeScript : MonoBehaviour
     public void ResetPosition()
     {
         _transform.Translate(Vector3.right*(float) (2 * 3.3563));
+        _transform.position = new Vector3(1.72f,-0.01f);
+        _transform.Translate(Vector3.up * 1.96f * Random.value);
     }
 
 // Start is called before the first frame update
@@ -27,8 +29,12 @@ public class PipeScript : MonoBehaviour
         _transform = GetComponent<Transform>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider2Ds = GetComponentsInChildren<Collider2D>();
+        
         //设置速度为公用速度
         _rigidbody2D.velocity = new Vector2(-GameManager.xSpeed,0);
+        
+        //设置随机y坐标0.52-2.48
+        _transform.Translate(Vector3.up * 1.96f * Random.value);
     }
 
     // Update is called once per frame

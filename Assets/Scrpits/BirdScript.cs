@@ -19,10 +19,17 @@ public class BirdScript : MonoBehaviour
     public Sprite redPicture;
     public Sprite yellowPicture;
     public Sprite bluePicture;
+
+    public AudioClip waveSound;
+    public AudioClip hitSound;
+    public AudioClip scoreSound;
+    public AudioClip dropSound;
     //这个游戏对象的其他组件
     private Animator animator;
     private Rigidbody2D _rigidbody2D;
     private Transform _transform;
+    private AudioSource _audioSource;
+
     //私有字段
     
 
@@ -69,6 +76,8 @@ public class BirdScript : MonoBehaviour
         animator = transform.Find("YellowBird").GetComponent<Animator>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _transform = GetComponent<Transform>();
+        _audioSource = GetComponent<AudioSource>();
+
         //指令
         _rigidbody2D.simulated = false;
         DontDestroyOnLoad(gameObject);
@@ -82,6 +91,7 @@ public class BirdScript : MonoBehaviour
         {
             //_rigidbody2D.AddForce(Vector2.up * 5.5f,ForceMode2D.Impulse);
             _rigidbody2D.velocity = Vector2.up*3;
+            _audioSource.PlayOneShot(waveSound);
         }
     }
 
@@ -104,7 +114,7 @@ public class BirdScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)//要是装上扳机碰撞体
     {
         
-        if (other.CompareTag("Pipe") || other.CompareTag("Ground"))
+        if (state != BirdState.Dead &&( other.CompareTag("Pipe") || other.CompareTag("Ground") ) )
         {
             //把管子停下来
             var foundPipeScripts = GameObject.FindObjectsOfType<PipeScript>(); //通过pipeScrpit的类型找到所有附着在管子上的组件。
@@ -119,6 +129,8 @@ public class BirdScript : MonoBehaviour
             //把自己停下来
             state = BirdState.Dead;
             animator.SetTrigger("die");
+            GameManager.Instance.playSound(dropSound);
+            _audioSource.PlayOneShot(hitSound);
         }
         if (other.CompareTag("Ground"))
         {
@@ -129,6 +141,7 @@ public class BirdScript : MonoBehaviour
         {
             GameManager.Instance.ScoreAdd();
             BigCounterScript.instance.Print(GameManager.Instance.score);
+            _audioSource.PlayOneShot(scoreSound);
         }
         
     }

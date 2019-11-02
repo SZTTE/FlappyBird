@@ -6,9 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class StartButtonScript : MonoBehaviour
 {
-    private TextMesh scoreText;
-    private TextMesh bestText;
-    
+
     public static StartButtonScript instance;
     public bool pushable = false;
 
@@ -21,14 +19,13 @@ public class StartButtonScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scoreText = GameObject.Find("Score").GetComponent<TextMesh>();
-        bestText = GameObject.Find("Best").GetComponent<TextMesh>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = GameManager.Instance.score.ToString();
+
     }
     
     private void OnMouseDown()

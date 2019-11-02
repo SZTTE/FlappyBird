@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 12f337a196212c948814454325f7d8dd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - instance: {instanceID: 0}
+  - whitegoldMedal: {fileID: 772051552652778550, guid: 2abe2fcd98617a440a958ac8ceff1da5,
+      type: 3}
+  - goldMedal: {fileID: 5955329061760485876, guid: 2abe2fcd98617a440a958ac8ceff1da5,
+      type: 3}
+  - silverMedal: {fileID: -1424352229175844325, guid: 2abe2fcd98617a440a958ac8ceff1da5,
+      type: 3}
+  - bronzeMedal: {fileID: -2508680716189495012, guid: 2abe2fcd98617a440a958ac8ceff1da5,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -50,6 +50,14 @@ public class BigCounterScript : MonoBehaviour
         }
     }
 
+    public void Disappear()
+    {
+        for (int i = 0; i < 20; i++)//（10^i）是第i位数字容器的显示位数
+        {
+            bigNumTransforms[i].localPosition = new Vector3(0,0,-100);
+        }
+    }
+
 
     private void Awake()
     {

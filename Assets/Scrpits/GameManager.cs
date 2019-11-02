@@ -10,12 +10,19 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public static float xSpeed = 1;
     public int score = 0;
+    public static int highestScore = 0;
     private Animator GameOverUI_Animator;
+    private AudioSource _anotherAudioSource;
 
 
     public void ScoreAdd()
     {
         score++;
+    }
+
+    public void playSound(AudioClip au)
+    {
+        _anotherAudioSource.PlayOneShot(au);
     }
 
     //------------------------------------------------------------------------------------------------------------------事件函数
@@ -36,12 +43,15 @@ public class GameManager : MonoBehaviour
         PipesManager.instance.Stop();
         score = 0;
         BigCounterScript.instance.Print(0);
+        _anotherAudioSource = GameObject.Find("ExtraAudioSource").GetComponent<AudioSource>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (score > highestScore) highestScore = score;
+        
         if (Input.GetMouseButtonDown(0) && BirdScript.Instance.state == BirdScript.BirdState.SelfControl) //如果按下鼠标，鸟切换为玩家控制
         {
             BirdScript.Instance.LetPlayerControl();
@@ -54,6 +64,7 @@ public class GameManager : MonoBehaviour
         {
             GameOverUI_Animator.SetBool("Visible",true);
             StartButtonScript.instance.pushable = true;
+            BigCounterScript.instance.Disappear();
         }
         else
         {
