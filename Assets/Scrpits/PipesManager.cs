@@ -8,6 +8,7 @@ public class PipesManager : MonoBehaviour
     private PipeScript[] pipes;//从左到右分别是0到3号管子
     private Transform _transform;
     public static PipesManager instance;
+    public bool pipeIsRed = false;
     //------------------------------------------------------------------------------------------------------------公共函数
     public void Stop()
     {
@@ -29,12 +30,16 @@ public class PipesManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    void Start()
+    void OnEnable()
     {
         
         _transform = GetComponent<Transform>();
         pipes = GetComponentsInChildren<PipeScript>();//获取子对象里的所有脚本
         Debug.Log(pipes[0]);
+        if (Random.value > 0.5)
+        {
+            pipeIsRed = true;
+        }
     }
 
     // Update is called once per frame

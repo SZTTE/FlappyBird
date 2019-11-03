@@ -5,11 +5,13 @@ using UnityEngine;
 public class PipeScript : MonoBehaviour
 {
     public GameObject pipeOringin;
+    public Sprite redPipeUp;
+    public Sprite redPipeDown;
     public bool ShouldMove = true;
     private Transform _transform;
-
     private Rigidbody2D _rigidbody2D;
     private Collider2D[] _collider2Ds;
+    private SpriteRenderer[] _pipeRenderers;
 
     public double XPosition
     {
@@ -29,12 +31,19 @@ public class PipeScript : MonoBehaviour
         _transform = GetComponent<Transform>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider2Ds = GetComponentsInChildren<Collider2D>();
+        _pipeRenderers = GetComponentsInChildren<SpriteRenderer>();
         
         //设置速度为公用速度
         _rigidbody2D.velocity = new Vector2(-GameManager.xSpeed,0);
         
         //设置随机y坐标0.52-2.48
         _transform.Translate(Vector3.up * 1.96f * Random.value);
+        
+        if (PipesManager.instance.pipeIsRed)
+        {
+            _pipeRenderers[0].sprite = redPipeUp;
+            _pipeRenderers[1].sprite = redPipeDown;
+        }
     }
 
     // Update is called once per frame

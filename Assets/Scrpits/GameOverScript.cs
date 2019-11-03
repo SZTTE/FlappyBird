@@ -13,7 +13,13 @@ public class GameOverScript : MonoBehaviour
     public Sprite goldMedal;
     public Sprite silverMedal;
     public Sprite bronzeMedal;
+    public AudioClip huSound;
+    private AudioSource _audioSource;
 
+    public void PlayHu()//由 Animation Event 唤醒
+    {
+        _audioSource.PlayOneShot(huSound);
+    }
 
     public void ScoreRoll()//由 Animation Event 唤醒
     {
@@ -32,6 +38,7 @@ public class GameOverScript : MonoBehaviour
         scoreText = GameObject.Find("Score").GetComponent<TextMesh>();
         bestText = GameObject.Find("Best").GetComponent<TextMesh>();
         medalRenderer = GameObject.Find("Over_Medal").GetComponent<SpriteRenderer>();
+        _audioSource = GetComponent<AudioSource>();
 
         bestText.text = GameManager.highestScore.ToString();
     }

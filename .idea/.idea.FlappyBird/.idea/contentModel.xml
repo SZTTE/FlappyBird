@@ -7,6 +7,7 @@
         <e p="Scrpits" t="Include">
           <e p="BigCounterScript.cs" t="Include" />
           <e p="BirdScript.cs" t="Include" />
+          <e p="CameraScript.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="GameOverScript.cs" t="Include" />
           <e p="GroundScript.cs" t="Include" />

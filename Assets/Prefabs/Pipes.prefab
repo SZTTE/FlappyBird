@@ -343,6 +343,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pipeOringin: {fileID: 6209921427788044535}
+  redPipeUp: {fileID: 21300000, guid: 5edc8a23ddcf4544b82aa20c68bdf248, type: 3}
+  redPipeDown: {fileID: 5537369306379580553, guid: 2abe2fcd98617a440a958ac8ceff1da5,
+    type: 3}
   ShouldMove: 1
 --- !u!50 &974562184510646848
 Rigidbody2D:

@@ -41,6 +41,7 @@ public class BirdScript : MonoBehaviour
         state = BirdState.PlayerControl;
         _rigidbody2D.simulated = true;
         _rigidbody2D.velocity = Vector2.up*3;
+        _audioSource.PlayOneShot(waveSound);
     }
 
     public void ResetBird()//把鸟还原成刚开始游戏的状态
