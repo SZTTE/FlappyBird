@@ -446,7 +446,7 @@ Transform:
   - {fileID: 1029789526}
   - {fileID: 1556280701}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &420959373
 Animator:
@@ -852,7 +852,7 @@ Transform:
   - {fileID: 1489387325}
   - {fileID: 720506409}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &796314263
 Animator:
@@ -1024,7 +1024,7 @@ Transform:
   - {fileID: 356639221}
   - {fileID: 1681905986}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &984573503
 MonoBehaviour:
@@ -1767,7 +1767,7 @@ Transform:
   m_Children:
   - {fileID: 1586208305}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1697087212
 MonoBehaviour:
@@ -1938,7 +1938,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1828500366
 PrefabInstance:

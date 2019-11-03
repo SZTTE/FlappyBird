@@ -44,13 +44,18 @@ public class GameManager : MonoBehaviour
         score = 0;
         BigCounterScript.instance.Print(0);
         _anotherAudioSource = GameObject.Find("ExtraAudioSource").GetComponent<AudioSource>();
+        highestScore = PlayerPrefs.GetInt("HighestScore");
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (score > highestScore) highestScore = score;
+        if (score > highestScore)
+        {
+            highestScore = score;
+            PlayerPrefs.SetInt("HighestScore",highestScore);
+        }
         
         if (Input.GetMouseButtonDown(0) && BirdScript.Instance.state == BirdScript.BirdState.SelfControl) //如果按下鼠标，鸟切换为玩家控制
         {

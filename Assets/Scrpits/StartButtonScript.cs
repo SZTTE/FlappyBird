@@ -37,6 +37,7 @@ public class StartButtonScript : MonoBehaviour
             SceneManager.LoadScene("PlaySceneScene");
             pushable = false;
             BirdScript.Instance.ResetBird();
+            PlayerPrefs.Save();
         }
         
         //在封面场景中

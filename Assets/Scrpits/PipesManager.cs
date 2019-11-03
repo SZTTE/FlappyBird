@@ -35,7 +35,6 @@ public class PipesManager : MonoBehaviour
         
         _transform = GetComponent<Transform>();
         pipes = GetComponentsInChildren<PipeScript>();//获取子对象里的所有脚本
-        Debug.Log(pipes[0]);
         if (Random.value > 0.5)
         {
             pipeIsRed = true;

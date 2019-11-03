@@ -21,8 +21,7 @@ public class BigCounterScript : MonoBehaviour
             numberOfFigure++;
             temp /= 10;
         }
-
-        //Debug.Log(numberOfFigure);
+        
         
         //排列数字容器
         float xPositionForNextNumber = (float) -0.125 * (numberOfFigure - 1);
@@ -71,7 +70,6 @@ public class BigCounterScript : MonoBehaviour
         bigNumTransforms = new Transform[20];
         bigNumRenderers[0] = gameObject.GetComponentInChildren<SpriteRenderer>();
         bigNumTransforms[0] = transform.Find("BigNumber");
-        //Debug.Log(bigNumTransforms[0]);
         GameObject[] numbers = new GameObject[20];
         for (int i = 1; i < 20; i++)
         {

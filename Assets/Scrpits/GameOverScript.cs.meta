@@ -13,7 +13,7 @@ MonoImporter:
       type: 3}
   - bronzeMedal: {fileID: -2508680716189495012, guid: 2abe2fcd98617a440a958ac8ceff1da5,
       type: 3}
-  executionOrder: 0
+  executionOrder: 100
   icon: {instanceID: 0}
   userData: 
   assetBundleName: 
