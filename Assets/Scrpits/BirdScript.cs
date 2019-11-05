@@ -132,6 +132,7 @@ public class BirdScript : MonoBehaviour
             animator.SetTrigger("die");
             GameManager.Instance.playSound(dropSound);
             _audioSource.PlayOneShot(hitSound);
+            WhiteScript.instance.GetComponent<Animator>().SetTrigger("WhiteFlash");
         }
         if (other.CompareTag("Ground"))
         {

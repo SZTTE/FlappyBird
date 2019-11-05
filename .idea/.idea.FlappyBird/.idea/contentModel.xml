@@ -15,6 +15,7 @@
           <e p="PipesManager.cs" t="Include" />
           <e p="SkyScript.cs" t="Include" />
           <e p="StartButtonScript.cs" t="Include" />
+          <e p="WhiteScript.cs" t="Include" />
         </e>
         <e p="Unity切割图片方法.txt" t="Include" />
       </e>

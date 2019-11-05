@@ -21,8 +21,7 @@ public class BigCounterScript : MonoBehaviour
             numberOfFigure++;
             temp /= 10;
         }
-        
-        
+
         //排列数字容器
         float xPositionForNextNumber = (float) -0.125 * (numberOfFigure - 1);
         for (int i = 0; i <= numberOfFigure - 1; i++)//（10^i）是第i位数字容器的显示位数

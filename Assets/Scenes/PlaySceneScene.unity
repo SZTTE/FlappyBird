@@ -585,9 +585,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 720506409}
+  - component: {fileID: 720506411}
   - component: {fileID: 720506408}
+  - component: {fileID: 720506410}
   m_Layer: 0
-  m_Name: Over_White
+  m_Name: WhiteScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -630,7 +632,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 20
   m_Sprite: {fileID: -4562572758038259349, guid: 2abe2fcd98617a440a958ac8ceff1da5,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
@@ -651,12 +653,44 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 720506407}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6345396, y: -0.39817736, z: 69.94212}
+  m_LocalPosition: {x: -2.472, y: -0.224, z: 0}
   m_LocalScale: {x: 35.306465, y: 17.592743, z: 1}
   m_Children: []
-  m_Father: {fileID: 796314262}
-  m_RootOrder: 4
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &720506410
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720506407}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5814b990b658bed42842b3ad66abc08b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &720506411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720506407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d4c3153c41ac14baf36c29231f3720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instance: {fileID: 0}
 --- !u!1 &721935421
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,7 +884,6 @@ Transform:
   - {fileID: 346375273}
   - {fileID: 1671556534}
   - {fileID: 1489387325}
-  - {fileID: 720506409}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
