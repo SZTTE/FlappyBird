@@ -1,7 +1,10 @@
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
-[Bb]uild.*/
+[Bb]uild/
+build_x86/
+build_x86_64/
+AdrBuild/
 [Bb]uilds/
 Assets/AssetStoreTools*
 

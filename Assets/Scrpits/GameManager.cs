@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -23,6 +24,11 @@ public class GameManager : MonoBehaviour
     public void playSound(AudioClip au)
     {
         _anotherAudioSource.PlayOneShot(au);
+    }
+
+    private void EnableStartButton()
+    {
+        StartButtonScript.instance.pushable = true;
     }
 
     //------------------------------------------------------------------------------------------------------------------事件函数
@@ -48,6 +54,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private bool preBirdIsDead = false;//使得鸟死脚本只执行依次
     // Update is called once per frame
     void Update()
     {
@@ -64,14 +71,15 @@ public class GameManager : MonoBehaviour
             PipesManager.instance.Move();
         }
         
-        //如果鸟是死的，就切换出GameOverUI，并且启动按钮
-        if (BirdScript.Instance.state == BirdScript.BirdState.Dead)
+        //如果鸟是死的,并且本语句尚未执行依次，就切换出GameOverUI，并且启动按钮
+        if (BirdScript.Instance.state == BirdScript.BirdState.Dead && preBirdIsDead== false)
         {
             GameOverUI_Animator.SetBool("Visible",true);
-            StartButtonScript.instance.pushable = true;
+            Invoke("EnableStartButton",1f);
             BigCounterScript.instance.Disappear();
+            preBirdIsDead = true;
         }
-        else
+        if (BirdScript.Instance.state != BirdScript.BirdState.Dead)
         {
             GameOverUI_Animator.SetBool("Visible",false);
         }
